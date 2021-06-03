@@ -1,0 +1,14 @@
+{
+    String name = svltrq.getParameter("NAME");
+    StringBuffer sbres = new StringBuffer();
+    String query = "SELECT fullname FROM emp WHERE name = '" + name + "'";
+    ResultSet rs = DB.createStatement().executeQuery(query);
+    res.append("<table class=\"table\"><tr><th>Employee</th></tr>");
+    while (rs.next()) {
+        sbres.append("<tr><td>");
+        sbres.append(rs.getString("fullname"));
+        sbres.append("</td></tr>");
+    }
+    sbres.append("</table>");
+    svltresp.getWriter().append(sbres.toString());
+}  
